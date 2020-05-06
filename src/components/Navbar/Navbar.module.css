@@ -1,0 +1,9 @@
+.nav {
+  grid-area: n;
+  background-color: #2e2e2e;
+  color: #757575;
+}
+
+.nav div{
+  margin: 10px 50px;
+}
