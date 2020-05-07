@@ -1,3 +1,10 @@
 .item{
     color: greenyellow;
 }
+.my_post{
+    padding: 10px;
+    background-color: #000a6c;
+}
+.posts{
+    margin: 10px 0;
+}

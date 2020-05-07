@@ -2,8 +2,13 @@
   grid-area: n;
   background-color: #2e2e2e;
   color: #757575;
+  height: 100%;
+  min-height: 500px;
 }
 
-.nav div{
-  margin: 10px 50px;
+.nav .item{
+  padding: 10px 50px;
+}
+.active{
+  background-color: red;
 }
