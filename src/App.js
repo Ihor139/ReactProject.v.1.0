@@ -9,14 +9,14 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import Music from "./components/Music/Dialogs";
 import News from "./components/News/News";
 
-const App = () => {
+const App = (props) => {
     return (
         <BrowserRouter>
             <div className='app_wrapper'>
                 <Header/>
                 <Navbar/>
                 <div className='app_wrapper__content'>
-                    <Route path='/profile' component={Profile}/>
+                    <Route path='/profile' render={ () => <Profile datePost={props.postData}/>}/>
                     <Route path='/messages' component={Dialogs}/>
                     <Route path='/settings' component={Settings}/>
                     <Route path='/music' component={Music}/>
