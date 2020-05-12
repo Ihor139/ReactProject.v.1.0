@@ -8,19 +8,24 @@ import Settings from "./components/Settings/Settings";
 import {BrowserRouter, Route} from 'react-router-dom';
 import Music from "./components/Music/Dialogs";
 import News from "./components/News/News";
+import Friends from "./components/Friends/Friends";
 
 const App = (props) => {
-    return (
+    // debugger;
+    return  (
         <BrowserRouter>
             <div className='app_wrapper'>
                 <Header/>
-                <Navbar/>
+                <Navbar state={props.state.friendsPage}/>
                 <div className='app_wrapper__content'>
-                    <Route path='/profile' render={ () => <Profile datePost={props.postData}/>}/>
-                    <Route path='/messages' component={Dialogs}/>
+                    <Route path='/profile' render={() => <Profile state={props.state.profilePage}/>}/>
+                    <Route path='/messages'
+                           render={() => <Dialogs DialogsData={props.state.MessagePage.DialogsData}
+                                                  MessageData={props.state.MessagePage.MessageData}/>}/>
                     <Route path='/settings' component={Settings}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/news' component={News}/>
+                    <Route path='/friends' render={() => <Friends state={props.state.friendsPage}/>}/>
                 </div>
             </div>
         </BrowserRouter>

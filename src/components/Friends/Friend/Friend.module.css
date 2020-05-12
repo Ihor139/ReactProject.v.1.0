@@ -1,0 +1,16 @@
+.friend img{
+    margin: 0 5px;
+    border-radius: 100%;
+    max-width: 50px;
+    max-height: 50px;
+    min-width: 40px;
+    min-height: 40px;
+    background-color: #ff9a50;
+}
+.friend{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

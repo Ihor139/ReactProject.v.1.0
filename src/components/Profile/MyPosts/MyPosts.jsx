@@ -3,8 +3,7 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-
-    let post = props.postdate.map(p => <Post message={p.postMessage} likesCount={p.likesCounter} id={p.id}/>);
+    let post = props.PostData.map(p => <Post message={p.postMessage} likesCount={p.likesCounter} id={p.id}/>);
 
     return (
         <div className={s.my_post}>
