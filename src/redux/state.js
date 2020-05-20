@@ -44,7 +44,7 @@ let store = {
         },
     },
 
-    getState(){
+    getState() {
         return this._state
     },
 
@@ -52,41 +52,40 @@ let store = {
         console.log('State changed')
     },
 
-    addPost() {
-        let newPost = {
-            postMessage: this._state.profilePage.newPostText,
-            id: 5,
-            likesCounter: 0,
-        };
-        this._state.profilePage.PostData.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._renderEntireTree(this._state);
-    },
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                postMessage: this._state.profilePage.newPostText,
+                id: 5,
+                likesCounter: 0,
+            };
+            this._state.profilePage.PostData.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._renderEntireTree(this._state);
 
-    updateTextPost(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._renderEntireTree(this._state);
-    },
+        } else if (action.type === 'UPDATE-TEXT-POST') {
+            this._state.profilePage.newPostText = action.newText;
+            this._renderEntireTree(this._state);
 
-    addMessage() {
-        let newElement = {
-            message: this._state.MessagePage.newTextMessage,
-            id: 8,
-        };
-        this._state.MessagePage.MessageData.push(newElement);
-        this._state.MessagePage.newTextMessage = '';
-        this._renderEntireTree(this._state);
-    },
+        } else if (action.type === 'ADD-MESSAGE') {
+            let newElement = {
+                message: this._state.MessagePage.newTextMessage,
+                id: 8,
+            };
+            this._state.MessagePage.MessageData.push(newElement);
+            this._state.MessagePage.newTextMessage = '';
+            this._renderEntireTree(this._state);
 
-    updateTextMessage(newText) {
-        this._state.MessagePage.newTextMessage = newText;
-        this._renderEntireTree(this._state);
+        } else if (action.type === 'UPDATE-TEXT-MESSAGE') {
+            this._state.MessagePage.newTextMessage = action.newText;
+            this._renderEntireTree(this._state);
+
+        }
     },
 
     subscribe(observer) {
         this._renderEntireTree = observer;
     },
-
 }
 
 export default store;
