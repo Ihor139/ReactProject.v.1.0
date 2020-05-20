@@ -4,7 +4,6 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Messages/Messages";
 
 const Dialogs = (props) => {
-    // debugger;
     let dialogElement = props.DialogsData.map(d => <DialogItem nameUser={d.nameUser} id={d.id}/>)
     let messageElement = props.MessageData.map(m => <Message message={m.message} id={m.id}/>)
     // let AvatarElement = props.MessageData.map(m => <Avatar message={m.avaicon} id={m.id}/>)

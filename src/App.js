@@ -9,8 +9,6 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import Music from "./components/Music/Dialogs";
 import News from "./components/News/News";
 import Friends from "./components/Friends/Friends";
-import {addPost} from "./redux/state";
-import {addMessage} from "./redux/state";
 
 const App = (props) => {
     return  (
@@ -21,12 +19,12 @@ const App = (props) => {
                 <div className='app_wrapper__content'>
                     <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage}
                                                                   updateTextPost={props.updateTextPost}
-                                                                  addPost={addPost}/>}/>
+                                                                  addPost={props.addPost}/>}/>
                     <Route path='/messages'
                            render={() => <Dialogs DialogsData={props.state.MessagePage.DialogsData}
                                                   MessageData={props.state.MessagePage.MessageData}
                                                   updateTextMessage={props.updateTextMessage}
-                                                  addMessage={addMessage}/>}/>
+                                                  addMessage={props.addMessage}/>}/>
                     <Route path='/settings' component={Settings}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/news' component={News}/>
