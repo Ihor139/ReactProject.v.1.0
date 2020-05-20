@@ -1,3 +1,8 @@
+const actionTypeAddPost = 'ADD-POST';
+const actionTypeAddMessage = 'ADD-MESSAGE';
+const actionTypeUpdateTextPost = 'UPDATE-TEXT-POST';
+const actionTypeUpdateTextMessage = 'UPDATE-TEXT-MESSAGE';
+
 let store = {
     _state: {
         profilePage: {
@@ -53,7 +58,7 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === actionTypeAddPost) {
             let newPost = {
                 postMessage: this._state.profilePage.newPostText,
                 id: 5,
@@ -63,20 +68,20 @@ let store = {
             this._state.profilePage.newPostText = '';
             this._renderEntireTree(this._state);
 
-        } else if (action.type === 'UPDATE-TEXT-POST') {
+        } else if (action.type === actionTypeUpdateTextPost) {
             this._state.profilePage.newPostText = action.newText;
             this._renderEntireTree(this._state);
 
-        } else if (action.type === 'ADD-MESSAGE') {
+        } else if (action.type === actionTypeAddMessage) {
             let newElement = {
                 message: this._state.MessagePage.newTextMessage,
                 id: 8,
             };
-            this._state.MessagePage.MessageData.push(newElement);
             this._state.MessagePage.newTextMessage = '';
+            this._state.MessagePage.MessageData.push(newElement);
             this._renderEntireTree(this._state);
 
-        } else if (action.type === 'UPDATE-TEXT-MESSAGE') {
+        } else if (action.type === actionTypeUpdateTextMessage) {
             this._state.MessagePage.newTextMessage = action.newText;
             this._renderEntireTree(this._state);
 
@@ -87,6 +92,32 @@ let store = {
         this._renderEntireTree = observer;
     },
 }
+
+export const actionCreatorAddPost = () => {
+    return {
+        type: actionTypeAddPost
+    }
+};
+
+export const actionCreatorUpdateTextPost = (text) => {
+    return {
+        type: actionTypeUpdateTextPost,
+        newText: text,
+    }
+};
+
+export const actionCreatorAddMessage = () => {
+    return {
+        type: actionTypeAddMessage,
+    }
+};
+
+export const actionCreatorUpdateTextMessage = (text) => {
+    return {
+        type: actionTypeUpdateTextMessage,
+        newText: text,
+    }
+};
 
 export default store;
 

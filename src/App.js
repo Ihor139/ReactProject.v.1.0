@@ -11,6 +11,7 @@ import News from "./components/News/News";
 import Friends from "./components/Friends/Friends";
 
 const App = (props) => {
+    // debugger;
     return  (
         <BrowserRouter>
             <div className='app_wrapper'>
@@ -20,8 +21,8 @@ const App = (props) => {
                     <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage}
                                                                   dispatch={props.dispatch}/>}/>
                     <Route path='/messages'
-                           render={() => <Dialogs DialogsData={props.state.MessagePage.DialogsData}
-                                                  MessageData={props.state.MessagePage.MessageData}
+                           render={() => <Dialogs state={props.state.MessagePage}
+                                                  state={props.state.MessagePage}
                                                   dispatch={props.dispatch}/>}/>
                     <Route path='/settings' component={Settings}/>
                     <Route path='/music' component={Music}/>
