@@ -1,7 +1,6 @@
-const actionTypeAddPost = 'ADD-POST';
-const actionTypeAddMessage = 'ADD-MESSAGE';
-const actionTypeUpdateTextPost = 'UPDATE-TEXT-POST';
-const actionTypeUpdateTextMessage = 'UPDATE-TEXT-MESSAGE';
+import profileReducer from "./profile_reducer";
+import dialogsReducer from "./dialogs_reducer";
+import friendsReducer from "./friends_reducer";
 
 let store = {
     _state: {
@@ -58,66 +57,16 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === actionTypeAddPost) {
-            let newPost = {
-                postMessage: this._state.profilePage.newPostText,
-                id: 5,
-                likesCounter: 0,
-            };
-            this._state.profilePage.PostData.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._renderEntireTree(this._state);
-
-        } else if (action.type === actionTypeUpdateTextPost) {
-            this._state.profilePage.newPostText = action.newText;
-            this._renderEntireTree(this._state);
-
-        } else if (action.type === actionTypeAddMessage) {
-            let newElement = {
-                message: this._state.MessagePage.newTextMessage,
-                id: 8,
-            };
-            this._state.MessagePage.newTextMessage = '';
-            this._state.MessagePage.MessageData.push(newElement);
-            this._renderEntireTree(this._state);
-
-        } else if (action.type === actionTypeUpdateTextMessage) {
-            this._state.MessagePage.newTextMessage = action.newText;
-            this._renderEntireTree(this._state);
-
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.MessagePage = dialogsReducer(this._state.MessagePage, action);
+        this._state.friendsPage = friendsReducer(this._state.friendsPage, action);
+    this._renderEntireTree(this._state)
     },
 
     subscribe(observer) {
         this._renderEntireTree = observer;
     },
 }
-
-export const actionCreatorAddPost = () => {
-    return {
-        type: actionTypeAddPost
-    }
-};
-
-export const actionCreatorUpdateTextPost = (text) => {
-    return {
-        type: actionTypeUpdateTextPost,
-        newText: text,
-    }
-};
-
-export const actionCreatorAddMessage = () => {
-    return {
-        type: actionTypeAddMessage,
-    }
-};
-
-export const actionCreatorUpdateTextMessage = (text) => {
-    return {
-        type: actionTypeUpdateTextMessage,
-        newText: text,
-    }
-};
 
 export default store;
 
