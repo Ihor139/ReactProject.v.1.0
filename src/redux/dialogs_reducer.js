@@ -1,5 +1,6 @@
 const actionTypeAddMessage = 'ADD-MESSAGE';
 const actionTypeUpdateTextMessage = 'UPDATE-TEXT-MESSAGE';
+
 let initDialogs ={
         DialogsData:
             [
