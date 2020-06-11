@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 // Redux
 
 // const DialogsContainer = (props) => {
-//     // debugger;
+
 //     let state = props.store.getState();
 //
 //     let addMessage = () => {
@@ -31,8 +31,10 @@ import {connect} from "react-redux";
 // React-Redux library
 
 let mapStateToProps = (state) => {
+    // debugger;
     return {
         messagePage: state.MessagePage,
+        newTextMessage: state.MessagePage.newTextMessage,
     }
 }
 

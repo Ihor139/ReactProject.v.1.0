@@ -8,7 +8,8 @@ import {Route} from 'react-router-dom';
 import Music from "./components/Music/Dialogs";
 import News from "./components/News/News";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import {FriendsContainer} from "./components/Friends/Friend/FriendsContainer";
+import {FriendsContainer} from "./components/Friends/FriendsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = () => {
     // debugger;
@@ -25,6 +26,8 @@ const App = () => {
                     <Route path='/news' component={News}/>
                     <Route path='/friends'
                            render={() => <FriendsContainer />}/>
+                    <Route path='/users'
+                           render={() => <UsersContainer />}/>
                 </div>
             </div>
     );
