@@ -1,12 +1,9 @@
-const  FOLLOW = 'FOLLOW';
-const  UNFOLLOW = 'UNFOLLOW';
+const FOLLOW = 'FOLLOW';
+const UNFOLLOW = 'UNFOLLOW';
+const SETUSERS = 'SETUSERS';
 
 let initState = {
-    users:[
-        {id:1, followed:true, name:"Vasya",  status:"I'm a boss", location: {city:'Minsk', country:'Belarus'}},
-        {id:1, followed:false, name:"Grisha", status:"I'm a boss too", location: {city:'Kiev', country:'Ukraine'}},
-        {id:1, followed:true, name:"Petya",  status:"I'm a developper", location: {city:'Moscow', country:'Russia'}},
-    ]
+    users: [ ]
 };
 
 let UsersReducer = (state = initState, action) => {
@@ -15,17 +12,31 @@ let UsersReducer = (state = initState, action) => {
             return {
                 ...state,
                 // users: [...state.users],
-                users: state.users.map(u => u),
-                //
-                //
-                //
-                //
+                users: state.users.map(u => {
+                    if (u.id === action.userID) {
+                        return {...u, followed: true}
+                    }
+                    return u;
+                }),
             }
         }
         case UNFOLLOW: {
             return {
                 ...state,
-                users: [...state.users],
+                // users: [...state.users],
+                users: state.users.map(u => {
+                    if (u.id === action.userID) {
+                        return {...u, followed: false}
+                    }
+                    return u;
+                }),
+            }
+        }
+        case SETUSERS: {
+            // debugger;
+            return {
+                ...state,
+                users: [...state.users, ...action.users]
             }
         }
         default:
@@ -36,6 +47,8 @@ let UsersReducer = (state = initState, action) => {
 export const followAC = (userID) => ({type: FOLLOW, userID});
 
 export const unfollowAC = (userID) => ({type: UNFOLLOW, userID});
+
+export const setUsers = (users) => ({type: SETUSERS, users});
 //
 //
 

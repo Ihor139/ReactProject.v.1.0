@@ -7,7 +7,7 @@ let initState = {
             {postMessage: 'My firs post', id: '1', likesCounter: '11'},
             {postMessage: 'My second post', id: '2', likesCounter: '22'},
             {postMessage: 'My third post', id: '3', likesCounter: '33'},
-            {postMessage: 'My third post', id: '4', likesCounter: '44'},
+            {postMessage: 'My fourth post', id: '4', likesCounter: '44'},
         ],
     newPostText: ''
 };

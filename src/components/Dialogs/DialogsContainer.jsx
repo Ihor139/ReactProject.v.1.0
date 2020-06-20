@@ -31,7 +31,6 @@ import {connect} from "react-redux";
 // React-Redux library
 
 let mapStateToProps = (state) => {
-    // debugger;
     return {
         messagePage: state.MessagePage,
         newTextMessage: state.MessagePage.newTextMessage,
@@ -48,6 +47,4 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 }
-let DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
-
-export default DialogsContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(Dialogs);
