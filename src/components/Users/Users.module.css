@@ -30,3 +30,8 @@
   align-items: start;
   justify-content: space-between;
 }
+
+.selectPage{
+  font-weight: bold;
+  font-size: 20px;
+}
